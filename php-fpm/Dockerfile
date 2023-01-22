@@ -3,12 +3,23 @@ FROM php:8.1-fpm
 COPY php.ini /usr/local/etc/php/
 
 RUN apt update
-RUN apt install -y wget git vim unzip libpq-dev
+RUN apt install -y \
+git \
+libicu-dev \
+libonig-dev \
+libpq-dev \
+libzip-dev \
+mariadb-client \
+unzip \
+vim \
+wget \
+zlib1g-dev
 
 # Install PHP Extensions
-RUN apt install -y zlib1g-dev mariadb-client libzip-dev libonig-dev \
-    && docker-php-ext-install zip pdo_mysql
-
+RUN docker-php-ext-install \
+intl \
+pdo_mysql \
+zip
 
 RUN sed -i -e "s/;access.log = log\/\$pool.access.log/access.log = \/var\/log\/php-fpm.access.log/g" /usr/local/etc/php-fpm.d/www.conf
 
