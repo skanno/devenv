@@ -11,4 +11,15 @@ services:
         build: ./nginx/
         ports:
             - "80:80"
-
+    mysql:
+        container_name: mysql
+        build: ./mysql/
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: passpass
+            MYSQL_DATABASE: db
+            MYSQL_USER: user
+            MYSQL_PASSWORD: passpass
+        volumes:
+            - ./mysql/data:/var/lib/mysql
