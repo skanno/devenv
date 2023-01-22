@@ -5,7 +5,7 @@ services:
         container_name: php-fpm
         build: ./php-fpm/
         volumes:
-            - ./php/www:/var/www
+            - ./php-fpm/www:/var/www
     nginx:
         container_name: nginx
         build: ./nginx/
