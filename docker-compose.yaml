@@ -6,11 +6,13 @@ services:
         build: ./php-fpm/
         volumes:
             - ./php-fpm/www:/var/www
+        restart: always
     nginx:
         container_name: nginx
         build: ./nginx/
         ports:
             - "80:80"
+        restart: always
     mysql:
         container_name: mysql
         build: ./mysql/
@@ -23,3 +25,4 @@ services:
             MYSQL_PASSWORD: passpass
         volumes:
             - ./mysql/data:/var/lib/mysql
+        restart: always
