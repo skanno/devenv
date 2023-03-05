@@ -21,8 +21,6 @@ intl \
 pdo_mysql \
 zip
 
-RUN sed -i -e "s/;access.log = log\/\$pool.access.log/access.log = \/var\/log\/php-fpm.access.log/g" /usr/local/etc/php-fpm.d/www.conf
-
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_NO_INTERACTION 1
 COPY --from=composer/composer /usr/bin/composer /usr/bin/composer
